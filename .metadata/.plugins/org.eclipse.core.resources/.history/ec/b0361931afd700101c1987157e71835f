@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+ <head>
+ <title>ACTORIDB</title>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ </head>
+ <body>
+ <h1 class='time' id="hms"><b>aaaaaaaaaaaaaaaaaaaa</b></h1>
+  <h1 class='time' id="day"><b>MONDAY</b></h1>
+  
+ <h1 id="titlu"><b>Centralizator Actori</b></h1>
+
+
+ 
+  <hr>
+ <div id="butholder">
+ <a href="tabela_actori.jsp">
+ 	<div class="cssbutton "id="Butactori"><b class="sway-text"><strong>Actori</strong></b></div>
+ </a>
+<a href="tabela_teatre.jsp">
+	 <div class="cssbutton "id="Butteatre"><b class="sway-text"><strong>Teatre</strong></b></div>
+</a>
+ <a href="tabela_orase.jsp">
+<div class="cssbutton "id="Butorase"><b class="sway-text"><strong>Orase</strong></b></div>
+</a>
+ </div>
+ 
+ </body>
+ <style>
+ 
+ @font-face {
+  font-family: 'Persona';            /* You give it a nickname here */
+  src: url('./assets/earwig_factory/pers.ttf') format('truetype'); /* Point to the file */
+  font-weight: normal;
+  font-style: normal;
+}
+
+ @font-face {
+  font-family: 'Persona2';            /* You give it a nickname here */
+  src: url('./assets/earwig_factory/persona.otf') format('opentype'); /* Point to the file */
+  font-weight: normal;
+  font-style: normal;
+}
+ @font-face {
+  font-family: 'clock';            /* You give it a nickname here */
+  src: url('./assets/earwig_factory/p5hatty.ttf') format('truetype'); /* Point to the file */
+  font-weight: normal;
+  font-style: normal;
+}
+ body{
+ background-color: red;
+ }
+ .sway-text{
+ color:black;
+ font-size:300%;
+ font-family:Persona;
+
+ }
+ #butholder
+ {
+ display:flex;
+ padding:10px;
+ justify-content:center;
+ gap:20px;
+ }
+ #titlu{
+ text-align:left;
+ font-family: Persona2;
+ paint-order: stroke fill;
+ color:black;
+-webkit-text-stroke: 10px white;
+ font-size:400%;
+ }
+  .time{
+
+ font-family: clock;
+ paint-order: stroke fill;
+ color:black;
+-webkit-text-stroke: 10px white;
+
+ }
+ #hms{ position:absolute;
+  font-size:1000%;
+  top:-10%;
+  right:2%;
+ }
+#day{ position:absolute;
+right:5%;
+ font-size:400%;
+transform: rotate(-10deg);
+ }
+ .cssbutton
+ {
+ width:100%;
+ height:70%;
+ background-color:red;
+ padding:5px;
+ text-align: center;
+ }
+ 
+ 
+ 
+ .sway-text {
+  display: inline-block; /* Required for transform to work on text spans */
+  transition: color 0.3s; /* Optional: smooth color change */
+  cursor: default;
+   paint-order: stroke fill;
+ color:black;
+-webkit-text-stroke: 10px white;
+ font-size:400%;
+}
+ 
+ @keyframes sway {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+ 
+ .cssbutton:hover
+ {
+  background-color:white;
+  border: 3px solid black;
+  animation: sway 2s ease-in-out infinite;
+  }
+ </style>
+ <script>
+ const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+ let time = document.getElementById("hms");
+ let day = document.getElementById("day");
+ let d= new Date();
+ time.innerHTML = d.getDate();	
+ day.innerHTML = weekday[d.getDay()];	
+
+ 
+ </script>
+</html>

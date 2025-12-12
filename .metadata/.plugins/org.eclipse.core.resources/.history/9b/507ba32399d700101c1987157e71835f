@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+ <head>
+ <title>ACTORIDB</title>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ </head>
+ <body>
+ <h1 id="titlu">Centralizator Actori</h1>
+ <div id="butholder">
+ <div class="cssbutton "id="Butactori"><b><strong>Actori</strong></b></div>
+ <div class="cssbutton "id="Butactori"><b><strong>Teatre</strong></b></div>
+ <div class="cssbutton "id="Butactori"><b><strong>Orase</strong></b></div>
+ <p> <a href="tabela_actori.jsp"></a></p>
+ <p> <a href="tabela_teatre.jsp"><b><strong>Teatre</strong></b></a></p>
+ <p> <a href="tabela_orase.jsp"><b><strong>Orase</strong></b></a></p>
+ </div>
+ <br/>
+ <hr>
+ <ul>
+ <li><a href="modifica_Pacient.jsp"><b><strong>Modifica Actori</strong></b></a></li>
+ </ul>
+ <ul>
+ <li><a href="modifica_Medic.jsp"><b><strong>Modifica Medici</strong></b></a></li>
+ </ul>
+ <ul>
+ <li><a href="modifica_Consultatie.jsp"><b><strong>Modifica Consultatie</strong></b></a></li>
+ </ul>
+ <hr>
+ <hr>
+ </body>
+ <style>
+ body{
+ background-color: gray;
+ }
+ #butholder
+ {
+ display:flex;
+ 
+ }
+ #titlu{
+ text-align:center;
+ font: Arial;
+ text-color: red;
+ }
+ .cssbutton
+ {
+ width:20%;
+ height:10%;
+ background-color:lime}
+ .cssbutton:hover
+ {
+  background-color:green}
+ }
+ 
+ </style>
+</html>

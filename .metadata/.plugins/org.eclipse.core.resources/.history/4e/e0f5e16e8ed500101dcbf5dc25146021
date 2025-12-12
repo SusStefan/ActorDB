@@ -1,0 +1,299 @@
+/*
+ * Curs3_Eclipse - Valentin Pupezescu
+ */
+package db;
+import java.sql.*;
+/**
+ *
+ * @author vali
+ */
+public class JavaBean {
+	String error;
+	Connection con;
+	public JavaBean() {
+	}
+	public void connect() throws ClassNotFoundException, SQLException, Exception {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/actori?useSSL=false", "root", "2005");
+		} catch (ClassNotFoundException cnfe) {
+			error = "ClassNotFoundException: Nu s-a gasit driverul bazei de date.";
+			throw new ClassNotFoundException(error);
+		} catch (SQLException cnfe) {
+			error = "SQLException: Nu se poate conecta la baza de date.";
+			throw new SQLException(error);
+		} catch (Exception e) {
+			error = "Exception: A aparut o exceptie neprevazuta in timp ce se stabilea legatura la baza de date.";
+			throw new Exception(error);
+		}
+	} // connect()
+	public void disconnect() throws SQLException {
+		try {
+			if (con != null) {
+				con.close();
+			}
+		} catch (SQLException sqle) {
+			error = ("SQLException: Nu se poate inchide conexiunea la baza de date.");
+			throw new SQLException(error);
+		}
+	} // disconnect()
+	public void adaugaOras(String Nume, String Tara)
+			throws SQLException, Exception {
+		if (con != null) {
+			try {
+				// creaza un "prepared SQL statement"
+				Statement stmt;
+				stmt = con.createStatement();
+				stmt.executeUpdate("insert into orase(nume,tara) values('" +Nume
+		+ "' , '" + Tara + "');");
+			} catch (SQLException sqle) {
+				error = "ExceptieSQL: Reactualizare nereusita; este posibil sa existe duplicate.";
+				throw new SQLException(error);
+			}
+		} else {
+			error = "Exceptie: Conexiunea cu baza de date a fost pierduta.";
+			throw new Exception(error);
+		}
+	} // end of adaugaPacient()
+	
+	public void adaugateatru(String Nume, String Descriere, String Adresa, String Oras)
+			throws SQLException, Exception {
+		if (con != null) {
+			try {
+				// creaza un "prepared SQL statement"
+				Statement stmt;
+				stmt = con.createStatement();
+				stmt.executeUpdate("insert into teatre(nume,descriere,adresa,idoras) values('" + Nume +
+						"' , '" + Descriere + "', '" + Adresa + "', (SELECT idoras FROM orase WHERE nume = '" + Oras + "'));");
+			} catch (SQLException sqle) {
+				error = "ExceptieSQL: Reactualizare nereusita; este posibil sa existe duplicate.";
+				throw new SQLException(error);
+			}
+		} else {
+			error = "Exceptie: Conexiunea cu baza de date a fost pierduta.";
+			throw new Exception(error);
+		}
+	} // end of adaugaMedic()
+
+			public void adaugaactor(String Nume, String Prenume, String Rol, String Piesa, int Teatre)
+					throws SQLException, Exception {
+				if (con != null) {
+					try {
+						// creaza un "prepared SQL statement"
+						Statement stmt;
+						stmt = con.createStatement();
+						stmt.executeUpdate("insert into actori(nume,prenume,rol,piesa,idteatru) values('" + Nume +
+								"' , '" + Prenume + "', '" + Rol + "', '" + Piesa + "', '" + Teatre
+								+ "');");
+					} catch (SQLException sqle) {
+						error = "ExceptieSQL: Reactualizare nereusita; este posibil sa existe duplicate.";
+						throw new SQLException(error);
+					}
+				} else {
+					error = "Exceptie: Conexiunea cu baza de date a fost pierduta.";
+					throw new Exception(error);
+				}
+			} // end of adaugaMedic()
+	
+	public ResultSet vedeOrase() throws SQLException, Exception {
+	    ResultSet rs = null;
+	    try {
+	        // Simple query to select the ID and Name of all cities
+	        String queryString = "SELECT idoras, nume FROM orase ORDER BY nume";
+	        Statement stmt = con.createStatement();
+	        rs = stmt.executeQuery(queryString);
+	    } catch (SQLException sqle) {
+	        error = "SQLException: Interogarea oraselor nu a fost posibila.";
+	        throw new SQLException(error);
+	    } catch (Exception e) {
+	        error = "A aparut o exceptie in timp ce se extrageau orasele.";
+	        throw new Exception(error);
+	    }
+	    return rs;
+	}
+	
+	public ResultSet vedeTabela(String tabel) throws SQLException, Exception {
+		ResultSet rs = null;
+		try {
+			String queryString = ("select * from `actori`.`" + tabel + "`;");
+			Statement stmt = con.createStatement(/*ResultSet.TYPE_SCROLL_INSENSITIVE,
+ResultSet.CONCUR_READ_ONLY*/);
+			rs = stmt.executeQuery(queryString);
+		} catch (SQLException sqle) {
+			error = "SQLException: Interogarea nu a fost posibila.";
+			throw new SQLException(error);
+		} catch (Exception e) {
+			error = "A aparut o exceptie in timp ce se extrageau datele.";
+			throw new Exception(error);
+		}
+		return rs;
+	} // vedeTabela()
+	public ResultSet vedeTeatre() throws SQLException, Exception {
+		ResultSet rs = null;
+		try {
+			String queryString = ("select t.idteatru as idteatru"
+					+ ",t.nume as nume,"
+					+ "t.descriere as descriere,"
+					+ "t.adresa as adresa,o.nume as oras,o.tara as tara from teatre t inner join orase o using(idoras)");
+		    Statement stmt = con.createStatement(/*ResultSet.TYPE_SCROLL_INSENSITIVE,
+ResultSet.CONCUR_READ_ONLY*/);
+			rs = stmt.executeQuery(queryString);
+		} catch (SQLException sqle) {
+			error = "SQLException: Interogarea nu a fost posibila.";
+			throw new SQLException(error);
+		} catch (Exception e) {
+			error = "A aparut o exceptie in timp ce se extrageau datele.";
+			throw new Exception(error);
+		}
+		return rs;
+	} // vedeConsultatie()
+	
+	public ResultSet vedeActori() throws SQLException, Exception {
+		ResultSet rs = null;
+		try {
+			String queryString = ("SELECT a.idactor AS idactor, " +      // Added comma and space
+			           "a.nume AS nume, " +             // Added comma and space
+			           "a.prenume AS prenume, " +       // Added comma and space
+			           "a.rol AS rol, " +               // Added comma and space
+			           "a.piesa AS piesa, " +           // Added comma and space
+			           "t.nume AS teatru, " +           // Added comma and space
+			           "o.nume AS oras, " +             // Added comma and space
+			           "o.tara AS tara " +              // Space before FROM clause
+			    "FROM actori a, teatre t, orase o " +
+			    "WHERE a.idteatru = t.idteatru AND t.idoras = o.idoras" // Correct join conditions
+			);
+		    Statement stmt = con.createStatement(/*ResultSet.TYPE_SCROLL_INSENSITIVE,
+ResultSet.CONCUR_READ_ONLY*/);
+			rs = stmt.executeQuery(queryString);
+		} catch (SQLException sqle) {
+			error = "SQLException: Interogarea nu a fost posibila.";
+			throw new SQLException(error);
+		} catch (Exception e) {
+			error = "A aparut o exceptie in timp ce se extrageau datele.";
+			throw new Exception(error);
+		}
+		return rs;
+	} // vedeConsultatie()
+	
+	public void stergeDateTabela(String[] primaryKeys, String tabela, String dupaID) throws
+	SQLException, Exception {
+		if (con != null) {
+			try {
+				// creaza un "prepared SQL statement"
+				long aux;
+				PreparedStatement delete;
+				delete = con.prepareStatement("DELETE FROM " + tabela + " WHERE " + dupaID + "=?;");
+				for (int i = 0; i < primaryKeys.length; i++) {
+					aux = java.lang.Long.parseLong(primaryKeys[i]);
+					delete.setLong(1, aux);
+					delete.execute();
+				}
+			} catch (SQLException sqle) {
+				error = "ExceptieSQL: Reactualizare nereusita; este posibil sa existe duplicate.";
+				throw new SQLException(error);
+			} catch (Exception e) {
+				error = "A aparut o exceptie in timp ce erau sterse inregistrarile.";
+				throw new Exception(error);
+			}
+		} else {
+			error = "Exceptie: Conexiunea cu baza de date a fost pierduta.";
+			throw new Exception(error);
+		}
+	} // end of stergeDateTabela()
+	public void stergeTabela(String tabela) throws SQLException, Exception {
+		if (con != null) {
+			try {
+				// creaza un "prepared SQL statement"
+				Statement stmt;
+				stmt = con.createStatement();
+				stmt.executeUpdate("delete from " + tabela + ";");
+			} catch (SQLException sqle) {
+				error = "ExceptieSQL: Stergere nereusita; este posibil sa existe duplicate.";
+				throw new SQLException(error);
+			}
+		} else {
+			error = "Exceptie: Conexiunea cu baza de date a fost pierduta.";
+			throw new Exception(error);
+		}
+	} // end of stergeTabela()
+	public void modificaTabela(String tabela, String IDTabela, int ID, String[] campuri, String[]
+			valori) throws SQLException, Exception {
+		String update = "update " + tabela + " set ";
+		String temp = "";
+		if (con != null) {
+			try {
+				for (int i = 0; i < campuri.length; i++) {
+					if (i != (campuri.length - 1)) {
+						temp = temp + campuri[i] + "='" + valori[i] + "', ";
+					} else {
+						temp = temp + campuri[i] + "='" + valori[i] + "' where " + IDTabela + "= '" + ID + "';";
+					}
+				}
+				update = update + temp;
+				// creaza un "prepared SQL statement"
+				Statement stmt;
+				stmt = con.createStatement();
+				stmt.executeUpdate(update);
+			} catch (SQLException sqle) {
+				error = "ExceptieSQL: Reactualizare nereusita; este posibil sa existe duplicate.";
+				throw new SQLException(error);
+			}
+		} else {
+			error = "Exceptie: Conexiunea cu baza de date a fost pierduta.";
+			throw new Exception(error);
+		}
+	} // end of modificaTabela()
+	public ResultSet intoarceLinie(String tabela, int ID) throws SQLException, Exception {
+		ResultSet rs = null;
+		try {
+			// Executa interogarea
+			String queryString = ("SELECT * FROM " + tabela + " where idpacient=" + ID + ";");
+			Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY);
+			rs = stmt.executeQuery(queryString); //sql exception
+		} catch (SQLException sqle) {
+			error = "SQLException: Interogarea nu a fost posibila.";
+			throw new SQLException(error);
+		} catch (Exception e) {
+			error = "A aparut o exceptie in timp ce se extrageau datele.";
+			throw new Exception(error);
+		}
+		return rs;
+	} // end of intoarceLinie()
+	public ResultSet intoarceLinieDupaId(String tabela, String denumireId, int ID) throws
+	SQLException, Exception {
+		ResultSet rs = null;
+		try {
+			// Executa interogarea
+			String queryString = ("SELECT * FROM " + tabela + " where " + denumireId + "=" + ID
+					+ ";");
+			Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY);
+			rs = stmt.executeQuery(queryString); //sql exception
+		} catch (SQLException sqle) {
+			error = "SQLException: Interogarea nu a fost posibila.";
+			throw new SQLException(error);
+		} catch (Exception e) {
+			error = "A aparut o exceptie in timp ce se extrageau datele.";
+			throw new Exception(error);
+		}
+		return rs;
+	} // end of intoarceLinieDupaId()
+	public ResultSet intoarceConsultatieId(int ID) throws SQLException, Exception {
+		ResultSet rs = null;
+		try {
+			// Executa interogarea
+			String queryString = ("SELECT a.Nume NumePacient, a.Prenume PrenumePacient, a.Adresa,b.Nume NumeMedic, b.Prenume PrenumeMedic, b.Sectie, c.idconsultatie, c.idmedic idmedic_consult,c.idpacient idpacient_consult, dataconsultatie, diagnostic, medicament FROM pacienti a, medici b,consultatie c WHERE a.idpacient = c.idpacient AND b.idmedic = c.idmedic and idconsultatie = '" +ID + "';");
+			Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY);
+			rs = stmt.executeQuery(queryString); //sql exception
+		} catch (SQLException sqle) {
+			error = "SQLException: Interogarea nu a fost posibila.";
+			throw new SQLException(error);
+		} catch (Exception e) {
+			error = "A aparut o exceptie in timp ce se extrageau datele.";
+			throw new Exception(error);
+		}
+		return rs;
+	} // end of intoarceLinieDupaId()
+}

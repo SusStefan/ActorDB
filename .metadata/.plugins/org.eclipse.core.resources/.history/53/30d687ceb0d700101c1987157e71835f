@@ -1,0 +1,79 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.lang.*,java.math.*,db.*,java.sql.*, java.io.*, java.util.*"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <title>Tabela Actori</title>
+ </head>
+ <jsp:useBean id="jb" scope="session" class="db.JavaBean" />
+ <jsp:setProperty name="jb" property="*" />
+ <body>
+ <h1 align="center"> Tabela Actori:</h1>
+ <br/>
+ <p align="center"><a href="adauga_actor.jsp"><b>Adauga un nou actor.</b></a> <a
+href="index.html"><b>Inapoi</b></a></p>
+ <form action="sterge_Pacient.jsp" method="post">
+ <table border="1" align="center">
+ <tr>
+ <td><b>Mark:</b></td>
+ <td><b>IdActor:</b></td>
+ <td><b>Nume:</b></td>
+ <td><b>Prenume:</b></td>
+ <td><b>Rol:</b></td>
+ <td><b>Piesa:</b></td>
+ <td><b>Teatru:</b></td>
+ <td><b>Adresa:</b></td>
+ <td><b>Oras:</b></td>
+ <td><b>Tara:</b></td>
+ </tr>
+ <%
+ jb.connect();
+ ResultSet rs = jb.vedeActori();
+ long x;
+ while (rs.next()) {
+ x = rs.getInt("idactor");
+ %>
+ <tr>
+ <td><input type="checkbox" name="primarykey" value="<%= x%>" /></td><td><%= x%></td>
+ <td><%= rs.getString("nume")%></td>
+ <td><%= rs.getString("prenume")%></td>
+ <td><%= rs.getString("rol")%></td>
+ <td><%= rs.getString("piesa")%></td>
+  <td><%= rs.getString("teatru")%></td>
+  <td><%= rs.getString("adresa")%></td>
+  <td><%= rs.getString("oras")%></td>
+  <td><%= rs.getString("tara")%></td>
+ <%
+ }
+ %>
+ </tr>
+ </table><br/>
+ <p align="center">
+ <input type="submit" value="Sterge liniile marcate">
+ </p>
+ </form>
+ <%
+ rs.close();
+ jb.disconnect();
+ %>
+ <br/>
+ <p align="center">
+ <a href="index.html"><b>Inapoi</b></a>
+ <br/>
+ </p>
+ <br/>
+ <hr>
+ <ul>
+ <li><a href="modifica_Pacient.jsp"><b><strong>Modifica Actori</strong></b></a></li>
+ </ul>
+ <ul>
+ <li><a href="modifica_Medic.jsp"><b><strong>Modifica Medici</strong></b></a></li>
+ </ul>
+ <ul>
+ <li><a href="modifica_Consultatie.jsp"><b><strong>Modifica Consultatie</strong></b></a></li>
+ </ul>
+ <hr>
+ <hr>
+ </body>
+</html>

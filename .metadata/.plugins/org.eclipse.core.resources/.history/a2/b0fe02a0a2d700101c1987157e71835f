@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+ <head>
+ <title>ACTORIDB</title>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ </head>
+ <body>
+  <hr>
+ <h1 id="titlu"><b>Centralizator Actori</b></h1>
+  <hr>
+ <div id="butholder">
+ <div class="cssbutton "id="Butactori"><b class="sway-text"><strong>Actori</strong></b></div>
+ <div class="cssbutton "id="Butteatre"><b><strong>Teatre</strong></b></div>
+ <div class="cssbutton "id="Butorase"><b><strong>Orase</strong></b></div>
+ <p> <a href="tabela_actori.jsp"></a></p>
+ <p> <a href="tabela_teatre.jsp"><b><strong>Teatre</strong></b></a></p>
+ <p> <a href="tabela_orase.jsp"><b><strong>Orase</strong></b></a></p>
+ </div>
+ <br/>
+ <hr>
+ <ul>
+ <li><a href="modifica_Pacient.jsp"><b><strong>Modifica Actori</strong></b></a></li>
+ </ul>
+ <ul>
+ <li><a href="modifica_Medic.jsp"><b><strong>Modifica Medici</strong></b></a></li>
+ </ul>
+ <ul>
+ <li><a href="modifica_Consultatie.jsp"><b><strong>Modifica Consultatie</strong></b></a></li>
+ </ul>
+ <hr>
+ <hr>
+ </body>
+ <style>
+ 
+ @font-face {
+  font-family: 'Persona';            /* You give it a nickname here */
+  src: url('./assets/earwig_factory/persona.otf') format('opentype'); /* Point to the file */
+  font-weight: normal;
+  font-style: normal;
+}
+ 
+ body{
+ background-color: gray;
+ }
+ b{
+ color:black;
+ font-size:300%;
+ font-family:Persona;
+ }
+ #butholder
+ {
+ display:flex;
+ padding:10px;
+ justify-content:center;
+ gap:20px;
+ }
+ #titlu{
+ text-align:center;
+ font: Arial;
+ text-color: red;
+ }
+ .cssbutton
+ {
+ width:20%;
+ height:10%;
+ background-color:#CCFF00;
+ padding:5px;
+ border: 3px solid green;
+ text-align: center;
+ }
+ .cssbutton:hover
+ {
+  background-color:green;
+  border: 3px solid black
+  }
+ }
+ 
+ .sway-text {
+  display: inline-block; /* Required for transform to work on text spans */
+  transition: color 0.3s; /* Optional: smooth color change */
+  cursor: default;
+}
+ 
+ @keyframes sway {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(5deg); }
+  100% { transform: rotate(0deg); }
+}
+ 
+ 
+.sway-text:hover {
+  animation: sway 2s ease-in-out infinite;
+   /* Optional: Change color while swaying */
+}
+
+}
+ </style>
+</html>
