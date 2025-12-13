@@ -20,7 +20,7 @@
 <div class="cssbutton "id="Butactori"><b class="sway-text"><strong>Inapoi</strong></b></div>
 </a>
 </div>
- <form action="sterge_actori.jsp" method="post">
+ <form action="sterge_actor.jsp" method="post">
  <table border="2" align="center">
  <tr>
  <td><b>Mark:</b></td>

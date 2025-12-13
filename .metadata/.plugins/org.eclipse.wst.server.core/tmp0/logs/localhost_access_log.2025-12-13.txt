@@ -238,3 +238,14 @@
 0:0:0:0:0:0:0:1 - - [13/Dec/2025:01:33:38 +0200] "GET /Actori/tabela_actori.jsp HTTP/1.1" 200 4556
 0:0:0:0:0:0:0:1 - - [13/Dec/2025:01:33:43 +0200] "GET /Actori/tabela_actori.jsp HTTP/1.1" 200 4404
 0:0:0:0:0:0:0:1 - - [13/Dec/2025:01:34:03 +0200] "GET /Actori/tabela_actori.jsp HTTP/1.1" 200 4420
+0:0:0:0:0:0:0:1 - - [13/Dec/2025:02:02:37 +0200] "GET /Actori/adauga_actor.jsp HTTP/1.1" 200 1061
+0:0:0:0:0:0:0:1 - - [13/Dec/2025:02:02:43 +0200] "GET /Actori/adauga_actor.jsp HTTP/1.1" 200 1061
+0:0:0:0:0:0:0:1 - - [13/Dec/2025:02:02:53 +0200] "POST /Actori/adauga_actor.jsp HTTP/1.1" 200 345
+0:0:0:0:0:0:0:1 - - [13/Dec/2025:02:02:54 +0200] "GET /Actori/index.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [13/Dec/2025:02:02:54 +0200] "GET /Actori/assets/earwig_factory/p5hatty.ttf HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [13/Dec/2025:02:02:54 +0200] "GET /Actori/assets/earwig_factory/pers.ttf HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [13/Dec/2025:02:02:56 +0200] "GET /Actori/tabela_actori.jsp HTTP/1.1" 200 4654
+0:0:0:0:0:0:0:1 - - [13/Dec/2025:02:03:01 +0200] "POST /Actori/sterge_Pacient.jsp HTTP/1.1" 404 748
+0:0:0:0:0:0:0:1 - - [13/Dec/2025:02:04:22 +0200] "GET /Actori/tabela_actori.jsp HTTP/1.1" 200 4653
+0:0:0:0:0:0:0:1 - - [13/Dec/2025:02:04:24 +0200] "POST /Actori/sterge_actori.jsp HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [13/Dec/2025:02:04:24 +0200] "GET /Actori/tabela_actori.jsp HTTP/1.1" 200 4419
