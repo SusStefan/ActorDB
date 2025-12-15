@@ -1,3 +1,5 @@
 INDEX VERSION 1.134
 /mnt/Linux_SSD/DB/eclipse_proj/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/2708130834.index
 /Actori/src/main/java
+/mnt/Linux_SSD/DB/eclipse_proj/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3679341740.index
+/Actori/src/main/java

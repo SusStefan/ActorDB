@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+ <head>
+ <title>ACTORIDB</title>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="persona.css">
+ </head>
+ <body>
+ <h1 class='time' id="hms"><b>aaaaaaaaaaaaaaaaaaaa</b></h1>
+  <h1 class='time' id="month"><b>aaaaaaaaaaaaaaaaaaaa</b></h1>
+  <h1 class='time' id="day"><b>MONDAY</b></h1>
+  <h1 class='time' id="stat"><b>day</b></h1>
+ <h1 id="titlu"><b>Centralizator Actori</b></h1>
+  <hr>
+ <div id="butholder">
+ <a href="tabela_actori.jsp">
+ 	<div class="cssbutton "id="butactor"><b class="sway-text"><strong>Actori</strong></b></div>
+ </a>
+<a href="tabela_teatre.jsp">
+	 <div class="cssbutton "id="butactor"><b class="sway-text"><strong>Teatre</strong></b></div>
+</a>
+ <a href="tabela_orase.jsp">
+<div class="cssbutton "id="butactor""><b class="sway-text"><strong>Orase</strong></b></div>
+</a>
+ </div>
+ </body>
+ <script>
+ const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+ const states = ["Early Morning","Daytime","Afternoon","Evening","Dark Hour"];
+ let time = document.getElementById("hms");
+ let day = document.getElementById("day");
+ let month = document.getElementById("month");
+ let d= new Date();
+ time.innerHTML = d.getDate();	
+ month.innerHTML = d.getMonth()+1+"/";	
+ day.innerHTML = weekday[d.getDay()];	
+
+ 
+ </script>
+</html>
