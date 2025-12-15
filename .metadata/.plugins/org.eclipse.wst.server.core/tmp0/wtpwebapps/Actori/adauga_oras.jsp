@@ -5,10 +5,14 @@
  <head>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <title>Adauga Oras</title>
+  <link rel="stylesheet" href="persona.css">
  </head>
  <jsp:useBean id="jb" scope="session" class="db.JavaBean" />
  <jsp:setProperty name="jb" property="*" />
  <body>
+  <div id="butholder2">
+  <h1 align="center" id="titlu">Adauga un oras:</h1>
+</div>
  <%
  String Nume = request.getParameter("nume");
  String Tara = request.getParameter("tara");
@@ -16,6 +20,7 @@
  jb.connect();
  jb.adaugaOras(Nume, Tara);
  jb.disconnect();
+ response.sendRedirect("tabela_orase.jsp");
  %>
  <p>Data: Introdusa cu Succes</p><%
  } else {
@@ -32,13 +37,44 @@
  <td> <input type="text" name="tara" size="30" /></td>
  </tr>
  </table>
- <input type="submit" value="Adauga orasul" />
+   <div id="butholder2">
+
+ <a href="tabela_orase.jsp">
+<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Inapoi</strong></b></div>
+</a> 
+<p align="center">
+    <button type="submit" class="cssbutton" id="butactori1">
+        <b class="sway-text"><strong>Adauga Orasul</strong></b>
+    </button>
+</p>
+<a href="index.html">
+<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Acasa</strong></b></div>
+</a> 
+ </div>
  </form>
  <%
  }
  %>
- <br/>
- <a href="index.html"><b>Inapoi</b></a>
- <br/>
+  <style>
+body{
+ background-image: url('assets/take_your_time.png');
+ background-size:cover;
+ background-position: center center;
+ }
+ #butactori1
+ {
+ background-color:grey;
+ }
+ input[type="text"], 
+select {
+background-color: #000;
+color: #fff;
+padding:5px;
+width:250px;
+font-size:16px;
+}
+ 
+</style>
+ 
  </body>
 </html>

@@ -60,7 +60,7 @@
  
 <p align="center">
     <button type="submit" class="cssbutton" id="butactori1">
-        <b class="sway-text"><strong>Sterge liniile marcate</strong></b>
+        <b class="sway-text"><strong>Sterge Actorul</strong></b>
     </button>
 </p>
  <a href="index.html">

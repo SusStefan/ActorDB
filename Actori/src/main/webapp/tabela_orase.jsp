@@ -10,14 +10,10 @@
  <jsp:useBean id="jb" scope="session" class="db.JavaBean" />
  <jsp:setProperty name="jb" property="*" />
  <body>
- <h1 align="center"> Tabela Orase:</h1>
- <br/>
-<a href="adauga_actor.jsp">
-<div class="cssbutton"><b class="sway-text"><strong>Adauga actor</strong></b></div>
-</a> 
- <a href="index.html">
-<div class="cssbutton"><b class="sway-text"><strong>Inapoi</strong></b></div>
-</a>
+ <div id="butholder2">
+ <h1 align="center" id="titlu"> Tabela Orase:</h1>
+ </div>
+
  <form action="sterge_orase.jsp" method="post">
  <table border="1" align="center">
  <tr>
@@ -38,15 +34,26 @@
  <td><input type="checkbox" name="primarykey" value="<%= x%>" /></td><td><%= x%></td>
  <td><%= rs.getString("nume")%></td>
  <td><%= rs.getString("tara")%></td>
- <td><a href="oras_m1.jsp?idoras=<%= x %>" class="action-button">><b>X</b></a></td>
+ <td><a href="oras_m1.jsp?idoras=<%= x %>" class="action-button"><b>X</b></a></td>
  <%
  }
  %>
  </tr>
- </table><br/>
- <p align="center">
- <input type="submit" value="Sterge liniile marcate">
- </p>
+ </table>
+  <div id="butholder2">
+ <a href="adauga_oras.jsp">
+<div class="cssbutton"><b class="sway-text"><strong>Adauga oras</strong></b></div>
+</a> 
+<p align="center">
+    <button type="submit" class="cssbutton" id="butactori1">
+        <b class="sway-text"><strong>Sterge Orasul</strong></b>
+    </button>
+</p>
+ <a href="index.html">
+<div class="cssbutton"><b class="sway-text"><strong>Inapoi</strong></b></div>
+</a>
+ </div>
+ 
  </form>
  <%
  rs.close();

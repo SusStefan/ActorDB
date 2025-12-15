@@ -31,6 +31,7 @@ if (Nume != null) {
      // 3. Call the correct method with the long ID
      jb.adaugaactori(Nume, Prenume, Rol, Piesa, idTeatru);
      jb.disconnect();
+     response.sendRedirect("tabela_actori.jsp");
  %>
  <p>Data: Introdusa cu Succes</p><%
  } else {

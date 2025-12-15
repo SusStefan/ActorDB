@@ -1,0 +1,13 @@
+0:0:0:0:0:0:0:1 - - [16/Dec/2025:00:00:03 +0200] "POST /Actori/oras_m2.jsp HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [16/Dec/2025:00:00:03 +0200] "GET /Actori/tabela_orase.jsp HTTP/1.1" 200 1869
+0:0:0:0:0:0:0:1 - - [16/Dec/2025:00:00:07 +0200] "GET /Actori/oras_m1.jsp?idoras=5 HTTP/1.1" 200 1568
+0:0:0:0:0:0:0:1 - - [16/Dec/2025:00:00:11 +0200] "POST /Actori/oras_m2.jsp HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [16/Dec/2025:00:00:11 +0200] "GET /Actori/tabela_orase.jsp HTTP/1.1" 200 1865
+0:0:0:0:0:0:0:1 - - [16/Dec/2025:00:00:19 +0200] "POST /Actori/sterge_orase.jsp HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [16/Dec/2025:00:00:19 +0200] "GET /Actori/tabela_orase.jsp HTTP/1.1" 200 1479
+0:0:0:0:0:0:0:1 - - [16/Dec/2025:00:00:19 +0200] "GET /Actori/persona.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [16/Dec/2025:00:00:26 +0200] "GET /Actori/adauga_oras.jsp HTTP/1.1" 200 1450
+0:0:0:0:0:0:0:1 - - [16/Dec/2025:00:00:27 +0200] "GET /Actori/tabela_orase.jsp HTTP/1.1" 200 1479
+0:0:0:0:0:0:0:1 - - [16/Dec/2025:00:00:28 +0200] "GET /Actori/oras_m1.jsp?idoras=4 HTTP/1.1" 200 1569
+0:0:0:0:0:0:0:1 - - [16/Dec/2025:00:00:30 +0200] "GET /Actori/index.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [16/Dec/2025:00:00:32 +0200] "GET /Actori/tabela_orase.jsp HTTP/1.1" 200 1479

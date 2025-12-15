@@ -5,14 +5,14 @@
  <head>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <title>Tabela Oras</title>
- <link href="table.css" rel="stylesheet" type="text/css" media="screen" />
+   <link rel="stylesheet" href="persona.css">
  </head>
  <jsp:useBean id="jb" scope="session" class="db.JavaBean" />
  <jsp:setProperty name="jb" property="*" />
  <body>
- <h1 align="center">Editeaza un oras:</h1>
- <br/>
- <p align="center"> <a href="index.html"><b>Home</b></a></p>
+<div id="butholder2">
+  <h1 align="center" id="titlu">Editeaza un oras:</h1>
+</div>
  <%
  jb.connect();
  int aux = java.lang.Integer.parseInt(request.getParameter("idoras"));
@@ -37,12 +37,41 @@
  <td align="right">Tara:</td>
  <td> <input type="text" name="Tara" size="30" value="<%= Tara%>"/></td>
  </tr>
- </table><p align="center">
- <input type="submit" value="Modifica orasul">
- </p>
+ </table>  <div id="butholder2">
+
+ <a href="tabela_orase.jsp">
+<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Inapoi</strong></b></div>
+</a> 
+<p align="center">
+    <button type="submit" class="cssbutton" id="butactori1">
+        <b class="sway-text"><strong>Modifica Orasul</strong></b>
+    </button>
+</p>
+<a href="index.html">
+<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Acasa</strong></b></div>
+</a> 
+ </div>
  </form>
- <p align="center">
- <a href="index.html"><b>Home</b></a>
- <br/>
+
+ <style>
+body{
+ background-image: url('assets/take_your_time.png');
+ background-size:cover;
+ background-position: center center;
+ }
+ #butactori1
+ {
+ background-color:grey;
+ }
+ input[type="text"], 
+select {
+background-color: #000;
+color: #fff;
+padding:5px;
+width:250px;
+font-size:16px;
+}
+ 
+</style>
  </body>
  </html>
