@@ -5,10 +5,14 @@
  <head>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <title>Adauga Actor</title>
+ <link rel="stylesheet" href="persona.css">
  </head>
  <jsp:useBean id="jb" scope="session" class="db.JavaBean" />
  <jsp:setProperty name="jb" property="*" />
  <body>
+  <div id="butholder2">
+  <h1 align="center" id="titlu">Adauga un actor:</h1>
+</div>
  <%
  String Nume = request.getParameter("nume");
  String Prenume = request.getParameter("prenume");
@@ -24,7 +28,6 @@ if (Nume != null) {
              idTeatru = Long.parseLong(idTeatruString);    
      }
      jb.connect();
-     
      // 3. Call the correct method with the long ID
      jb.adaugaactori(Nume, Prenume, Rol, Piesa, idTeatru);
      jb.disconnect();
@@ -32,7 +35,7 @@ if (Nume != null) {
  <p>Data: Introdusa cu Succes</p><%
  } else {
  %>
- <h1> Suntem in tabela Actori.</h1>
+
  <form action="adauga_actor.jsp" method="post">
  <table>
  <tr>
@@ -72,13 +75,44 @@ if (Nume != null) {
 </td>
  </tr>
  </table>
- <input type="submit" value="Adauga actorul" />
+  <div id="butholder2">
+
+ <a href="tabela_actori.jsp">
+<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Inapoi</strong></b></div>
+</a> 
+<p align="center">
+    <button type="submit" class="cssbutton" id="butactori1">
+        <b class="sway-text"><strong>Adauga Actorul</strong></b>
+    </button>
+</p>
+<a href="index.html">
+<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Acasa</strong></b></div>
+</a> 
+ </div>
  </form>
  <%
  }
  %>
- <br/>
- <a href="index.html"><b>Inapoi</b></a>
- <br/>
+ <style>
+body{
+ background-image: url('assets/take_your_time.png');
+ background-size:cover;
+ background-position: center center;
+ }
+ #butactori1
+ {
+ background-color:grey;
+ }
+ input[type="text"], 
+select {
+background-color: #000;
+color: #fff;
+padding:5px;
+width:250px;
+font-size:16px;
+}
+ 
+</style>
+
  </body>
 </html>

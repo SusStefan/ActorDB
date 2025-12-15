@@ -5,14 +5,19 @@
  <head>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <title>Tabela Orase</title>
+ <link rel="stylesheet" href="persona.css">
  </head>
  <jsp:useBean id="jb" scope="session" class="db.JavaBean" />
  <jsp:setProperty name="jb" property="*" />
  <body>
-  <a href="index.html"><b>Inapoi</b></a>
  <h1 align="center"> Tabela Orase:</h1>
  <br/>
- <p align="center"><a href="adauga_oras.jsp"><b>Adauga un nou oras.</b></a></p>
+<a href="adauga_actor.jsp">
+<div class="cssbutton"><b class="sway-text"><strong>Adauga actor</strong></b></div>
+</a> 
+ <a href="index.html">
+<div class="cssbutton"><b class="sway-text"><strong>Inapoi</strong></b></div>
+</a>
  <form action="sterge_orase.jsp" method="post">
  <table border="1" align="center">
  <tr>
@@ -20,6 +25,7 @@
  <td><b>IdOras:</b></td>
  <td><b>Nume:</b></td>
  <td><b>Tara:</b></td>
+ <td><b>Edit:</b></td>
  </tr>
  <%
  jb.connect();
@@ -32,6 +38,7 @@
  <td><input type="checkbox" name="primarykey" value="<%= x%>" /></td><td><%= x%></td>
  <td><%= rs.getString("nume")%></td>
  <td><%= rs.getString("tara")%></td>
+ <td><a href="oras_m1.jsp?idoras=<%= x %>" class="action-button">><b>X</b></a></td>
  <%
  }
  %>

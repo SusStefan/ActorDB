@@ -1,0 +1,102 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.lang.*,java.math.*,db.*,java.sql.*, java.io.*, java.util.*"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <title>Tabela Actor</title>
+  <link rel="stylesheet" href="persona.css">
+ </head>
+ <jsp:useBean id="jb" scope="session" class="db.JavaBean" />
+ <jsp:setProperty name="jb" property="*" />
+ <body>
+ <div id="butholder2">
+  <h1 align="center" id="titlu">Editeaza un actor:</h1>
+</div>
+ <%
+ jb.connect();
+ int aux = java.lang.Integer.parseInt(request.getParameter("idactor"));
+ ResultSet rs = jb.intoarceLinieDupaId("actori", "idactor", aux);
+ rs.first();
+ String Nume = rs.getString("Nume");
+ String Prenume = rs.getString("Prenume");
+ String Rol = rs.getString("Rol");
+ String Piesa = rs.getString("Piesa");
+ String idteatru = rs.getString("idteatru");
+ rs.close();
+ jb.disconnect();
+ %>
+ <form action="actor_m2.jsp" method="post">
+ <table align="center">
+ <tr>
+ <td align="right">IdActor:</td>
+ <td> <input type="text" name="idactor" size="30" value="<%= aux%>" readonly/></td>
+ </tr>
+ <tr>
+ <td align="right">Nume:</td>
+ <td> <input type="text" name="Nume" size="30" value="<%= Nume%>"/></td>
+ </tr>
+ <tr>
+ <td align="right">Prenume:</td>
+ <td> <input type="text" name="Prenume" size="30" value="<%=Prenume%>"/></td>
+ </tr>
+ <tr>
+ <td align="right">Rol:</td>
+ <td> <input type="text" name="Rol" size="30" value="<%=Rol%>"/></td>
+ </tr>
+ <tr>
+ <td align="right">Piesa:</td>
+ <td> <input type="text" name="Piesa" size="30" value="<%=Piesa%>"/></td>
+ </tr>
+   <tr>
+ <td align="right">Teatru:</td>
+ <td> 
+    <select name="idteatru" id="idteatru_choice">
+        <%
+        jb.connect();
+        ResultSet rsTeatre = jb.vedeTeatre(); 
+        while (rsTeatre.next()) {
+            long id = rsTeatre.getLong("idteatru");
+            String numeTeatru = rsTeatre.getString("nume");
+        %>
+            <option value="<%= id %>"><%= numeTeatru %></option>
+        <%
+        }
+        rsTeatre.close(); 
+        jb.disconnect(); 
+        %>
+    </select>
+</td>
+ </tr>
+ </table>
+ 
+  <div id="butholder2">
+
+ <a href="tabela_actori.jsp">
+<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Inapoi</strong></b></div>
+</a> 
+<p align="center">
+    <button type="submit" class="cssbutton" id="butactori1">
+        <b class="sway-text"><strong>Modifica Actorul</strong></b>
+    </button>
+</p>
+<a href="index.html">
+<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Acasa</strong></b></div>
+</a> 
+ </div>
+ </form>
+<style>
+body{
+ background-image: url('assets/take_your_time.png');
+ background-size:cover;
+ background-position: center center;
+ }
+ .cssbutton
+ {
+ 
+ background-color:black;
+
+ }
+</style>
+ </body>
+ </html>
