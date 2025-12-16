@@ -133,12 +133,18 @@ top:10%;
 -webkit-text-stroke: 10px white;
  font-size:400%;
 }
+#smol{
+	position:absolute;
+	bottom:3px;
+	font-size:25px;
+	
+}
  .cssbutton:hover {
     cursor: pointer;
     background-color: white;
     border: 3px solid black;
     /* REMOVE the animation from the button container */
-}
+}	
 /* 2. NEW: Target the text element (.sway-text) when its parent (.cssbutton) is hovered. */
 .cssbutton:hover .sway-text { 
     animation: sway 2s ease-in-out infinite;

@@ -4,14 +4,14 @@
 <html>
  <head>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- <title>Tabela Actor</title>
+ <title>Actor Editor</title>
   <link rel="stylesheet" href="persona.css">
  </head>
  <jsp:useBean id="jb" scope="session" class="db.JavaBean" />
  <jsp:setProperty name="jb" property="*" />
  <body>
  <div id="butholder2">
-  <h1 align="center" id="titlu">Editeaza un actor:</h1>
+  <h1 align="center" id="titlu">Edit current actor:</h1>
 </div>
  <%
  jb.connect();
@@ -29,27 +29,27 @@
  <form action="actor_m2.jsp" method="post">
  <table align="center">
  <tr>
- <td align="right">IdActor:</td>
+ <td align="right">ActorID (ReadOnly):</td>
  <td> <input type="text" name="idactor" size="30" value="<%= aux%>" readonly/></td>
  </tr>
  <tr>
- <td align="right">Nume:</td>
+ <td align="right">Name:</td>
  <td> <input type="text" name="Nume" size="30" value="<%= Nume%>"/></td>
  </tr>
  <tr>
- <td align="right">Prenume:</td>
+ <td align="right">Surname:</td>
  <td> <input type="text" name="Prenume" size="30" value="<%=Prenume%>"/></td>
  </tr>
  <tr>
- <td align="right">Rol:</td>
+ <td align="right">Role:</td>
  <td> <input type="text" name="Rol" size="30" value="<%=Rol%>"/></td>
  </tr>
  <tr>
- <td align="right">Piesa:</td>
+ <td align="right">Play:</td>
  <td> <input type="text" name="Piesa" size="30" value="<%=Piesa%>"/></td>
  </tr>
    <tr>
- <td align="right">Teatru:</td>
+ <td align="right">Theatre:</td>
  <td> 
     <select name="idteatru" id="idteatru_choice">
         <%
@@ -73,15 +73,15 @@
   <div id="butholder2">
 
  <a href="tabela_actori.jsp">
-<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Inapoi</strong></b></div>
+<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Back</strong></b></div>
 </a> 
 <p align="center">
     <button type="submit" class="cssbutton" id="butactori1">
-        <b class="sway-text"><strong>Modifica Actorul</strong></b>
+        <b class="sway-text"><strong>Modify Actor</strong></b>
     </button>
 </p>
 <a href="../index.html">
-<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Acasa</strong></b></div>
+<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Home</strong></b></div>
 </a> 
  </div>
  </form>

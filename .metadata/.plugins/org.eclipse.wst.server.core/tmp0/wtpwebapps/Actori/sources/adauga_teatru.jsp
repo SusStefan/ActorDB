@@ -4,14 +4,14 @@
 <html>
  <head>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- <title>Adauga Teatru</title>
+ <title>Theatre Introduction Screen</title>
   <link rel="stylesheet" href="persona.css">
  </head>
  <jsp:useBean id="jb" scope="session" class="db.JavaBean" />
  <jsp:setProperty name="jb" property="*" />
  <body>
  <div id="butholder2">
-  <h1 align="center" id="titlu">Adauga un teatru:</h1>
+  <h1 align="center" id="titlu">Add a new Theatre:</h1>
 </div>
  <%
  String Nume = request.getParameter("nume");
@@ -38,7 +38,6 @@
  } else { 
  // --- START Form Display Logic ---
 %>
-    <h1> Suntem in tabela Teatru.</h1>
     
     <%
 // --- END Form Display Logic ---
@@ -47,19 +46,19 @@
  <form action="adauga_teatru.jsp" method="post">
  <table>
  <tr>
- <td align="right">Nume Teatru:</td>
+ <td align="right">Theatre name:</td>
  <td> <input type="text" name="nume" size="40" /></td>
  </tr>
  <tr>
- <td align="right">Descriere:</td>
+ <td align="right">Description:</td>
  <td> <input type="text" name="descriere" size="30" /></td>
  </tr>
   <tr>
- <td align="right">Adresa:</td>
+ <td align="right">Adress:</td>
  <td> <input type="text" name="adresa" size="30" /></td>
  </tr>
   <tr>
- <td align="right">Nume Oras:</td>
+ <td align="right">City Name:</td>
  <td> 
     <select name="idoras" id="idoras_choice">
         <%
@@ -82,15 +81,15 @@
   <div id="butholder2">
 
  <a href="tabela_teatre.jsp">
-<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Inapoi</strong></b></div>
+<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Back</strong></b></div>
 </a> 
 <p align="center">
     <button type="submit" class="cssbutton" id="butactori1">
-        <b class="sway-text"><strong>Adauga Teatrul</strong></b>
+        <b class="sway-text"><strong>Add Theatre</strong></b>
     </button>
 </p>
 <a href="../index.html">
-<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Acasa</strong></b></div>
+<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Home</strong></b></div>
 </a> 
  </div>
  </form>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+ <head>
+ <title>ACTORIDB</title>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="./sources/persona.css">
+ </head>
+ <body>
+ <h1 class='time' id="hms"><b>aaaaaaaaaaaaaaaaaaaa</b></h1>
+  <h1 class='time' id="month"><b>aaaaaaaaaaaaaaaaaaaa</b></h1>
+  <h1 class='time' id="day"><b>MONDAY</b></h1>
+  <h1 class='time' id="stat"><b>day</b></h1>
+  <div id="title_screen">
+ <h1 id="titlu"><b>Actor Database</b></h1>
+ 
+ <div id="butholder">
+ <a href="./sources/tabela_actori.jsp">
+ 	<div class="cssbutton "id="butactor"><b class="sway-text"><strong>Actori</strong></b></div>
+ </a>
+<a href="./sources/tabela_teatre.jsp">
+	 <div class="cssbutton "id="butactor"><b class="sway-text"><strong>Teatre</strong></b></div>
+</a>
+ <a href="./sources/tabela_orase.jsp">
+<div class="cssbutton "id="butactor""><b class="sway-text"><strong>Orase</strong></b></div>
+</a>
+ </div>
+ </div>
+ <b class="sway-text" id="smol"><strong>Project made by: Susanescu Stefan / 12.2025</strong></b>
+ </body>
+ <script>
+ const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+ const states = ["Early Morning","Daytime","Afternoon","Evening","Dark Hour"];
+ let time = document.getElementById("hms");
+ let day = document.getElementById("day");
+ let month = document.getElementById("month");
+ let stat= document.getElementById("stat");
+ let d= new Date();
+ time.innerHTML = d.getDate();	
+ month.innerHTML = d.getMonth()+1+"/";	
+ day.innerHTML = weekday[d.getDay()];	
+if(d.getHours()>6 && d.getHours()<10) stat.innerHTML = states[0];
+else if(d.getHours()>6 && d.getHours()<10) stat.innerHTML = states[0];
+else if(d.getHours()>10 && d.getHours()<13) stat.innerHTML = states[1];
+else if(d.getHours()>13 && d.getHours()<17) stat.innerHTML = states[2];
+else if(d.getHours()>17) stat.innerHTML = states[3];
+else stat.innerHTML = states[4];
+ </script>
+ <style>
+body{
+ background-image: url('./sources/assets/title.png');
+ background-size:cover;
+ background-position:bottom bottom;
+ background-repeat:no-repeat;
+ }
+ </style>
+</html>

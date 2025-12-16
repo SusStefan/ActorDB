@@ -11,16 +11,16 @@
  <jsp:setProperty name="jb" property="*" />
  <body>
  <div id="butholder2">
- <h1 align="center" id="titlu"> Tabela Orase:</h1>
+ <h1 align="center" id="titlu"> City Manager:</h1>
  </div>
 
  <form action="sterge_orase.jsp" method="post">
  <table border="1" align="center">
  <tr>
  <td><b>Mark:</b></td>
- <td><b>IdOras:</b></td>
- <td><b>Nume:</b></td>
- <td><b>Tara:</b></td>
+ <td><b>CityID:</b></td>
+ <td><b>City name:</b></td>
+ <td><b>Country:</b></td>
  <td><b>Edit:</b></td>
  </tr>
  <%
@@ -42,15 +42,15 @@
  </table>
   <div id="butholder2">
  <a href="adauga_oras.jsp">
-<div class="cssbutton"><b class="sway-text"><strong>Adauga oras</strong></b></div>
+<div class="cssbutton"><b class="sway-text"><strong>Add City</strong></b></div>
 </a> 
 <p align="center">
     <button type="submit" class="cssbutton" id="butactori1">
-        <b class="sway-text"><strong>Sterge Orasul</strong></b>
+        <b class="sway-text"><strong>Delete City</strong></b>
     </button>
 </p>
 <a href="../index.html">
-<div class="cssbutton"><b class="sway-text"><strong>Inapoi</strong></b></div>
+<div class="cssbutton"><b class="sway-text"><strong>Back</strong></b></div>
 </a>
  </div>
  

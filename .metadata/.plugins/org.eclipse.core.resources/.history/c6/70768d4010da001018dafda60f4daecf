@@ -1,0 +1,163 @@
+ 
+ @font-face {
+  font-family: 'Persona';            /* You give it a nickname here */
+  src: url('assets/earwig_factory/pers.ttf') format('truetype'); /* Point to the file */
+  font-weight: normal;
+  font-style: normal;
+}
+
+ @font-face {
+  font-family: 'Persona2';            /* You give it a nickname here */
+  src: url('assets/earwig_factory/persona.otf') format('opentype'); /* Point to the file */
+  font-weight: normal;
+  font-style: normal;
+}
+ @font-face {
+  font-family: 'clock';            /* You give it a nickname here */
+  src: url('assets/earwig_factory/p5hatty.ttf') format('truetype'); /* Point to the file */
+  font-weight: normal;
+  font-style: normal;
+}
+ body{
+ background-color: red;
+ }
+ table{
+width:90%;
+margin: 20px auto;
+border-collapse: collapse;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+text-align:center;
+color:white;
+font-size:200%
+}
+ 
+ table tbody tr:nth-of-type(even) {
+  background-color: #656261;
+}
+ table tbody tr:nth-of-type(odd) {
+  background-color: #3f3e3e;
+}
+ .sway-text{
+ color:black;
+ font-size:300%;
+ font-family:Persona;
+
+ }
+ #butholder
+ {
+ display:flex;
+flex-direction: column;
+ padding:10px;
+ justify-content:center;
+ 
+ gap:20px;
+ }
+  #butholder2
+ {
+ display:flex;
+flex-direction: row;
+ padding:10px;
+ justify-content:center;
+ align-items:center;
+ gap:20px;
+ }
+ #titlu{
+ text-align:left;
+ font-family: Persona2;
+ paint-order: stroke fill;
+ color:black;
+-webkit-text-stroke: 10px white;
+ font-size:400%;
+ }
+  .time{
+
+ font-family: clock;
+ paint-order: stroke fill;
+ color:white;
+-webkit-text-stroke: 30px black;
+
+ }
+ #hms{ position:absolute;
+  font-size:1000%;
+  top:-13%;
+  right:6%;
+ }
+#day{ position:absolute;
+right:3%;
+ font-size:400%;
+transform: rotate(-10deg);
+ }
+ #month{ position:absolute;
+right:13%;
+top:-4%;
+ font-size:500%;
+ transform: rotate(10deg);
+ }
+ #stat
+ {
+  position:absolute;
+right:16%;
+top:10%;
+ font-size:300%;
+ transform: rotate(-10deg);
+ }
+ 
+ .cssbutton
+ {
+ 
+ background-color:red;
+ padding:5px;
+ text-align: center;
+ }
+  #butactor
+ {
+ width:20%;
+ height:70%;
+
+ }
+ #butactor1
+ {
+ width:50%;
+ height:50%;
+ background-color:red;
+ padding:5px;
+ text-align: center;
+ }
+ 
+ .sway-text {
+  display: inline-block; /* Required for transform to work on text spans */
+  transition: color 0.3s; /* Optional: smooth color change */
+  cursor: default;
+   paint-order: stroke fill;
+ color:black;
+-webkit-text-stroke: 10px white;
+ font-size:400%;
+}
+#smol{
+	position:absolute;
+	bottom:3px;
+	font-size:20px;
+	
+}
+ .cssbutton:hover {
+    cursor: pointer;
+    background-color: white;
+    border: 3px solid black;
+    /* REMOVE the animation from the button container */
+}	
+/* 2. NEW: Target the text element (.sway-text) when its parent (.cssbutton) is hovered. */
+.cssbutton:hover .sway-text { 
+    animation: sway 2s ease-in-out infinite;
+}
+
+/* Also ensure your animation keyframes are not accidentally closed early,
+   as your previous post had an extra closing brace at the end of the file. */
+
+/* Corrected Keyframes Block */
+@keyframes sway {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}

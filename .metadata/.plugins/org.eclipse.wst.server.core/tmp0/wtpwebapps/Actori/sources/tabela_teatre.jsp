@@ -11,18 +11,18 @@
  <jsp:setProperty name="jb" property="*" />
  <body>
    <div id="butholder2">
- <h1 align="center" id="titlu"> Tabela Teatre:</h1>
+ <h1 align="center" id="titlu"> Theater Manager:</h1>
 </div>
  <form action="sterge_teatre.jsp" method="post">
  <table border="1" align="center">
  <tr>
  <td><b>Mark:</b></td>
- <td><b>IdTeatru:</b></td>
- <td><b>Nume:</b></td>
- <td><b>Descriere:</b></td>
- <td><b>Adresa:</b></td>
- <td><b>Oras:</b></td>
- <td><b>Tara:</b></td>
+ <td><b>TheaterID:</b></td>
+ <td><b>Name:</b></td>
+ <td><b>Description:</b></td>
+ <td><b>Adress:</b></td>
+ <td><b>City:</b></td>
+ <td><b>Country:</b></td>
  <td><b>Edit:</b></td>
  </tr>
  <%
@@ -47,17 +47,17 @@
  </table><br/>
   <div id="butholder2">
  <a href="adauga_teatru.jsp">
-<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Adauga teatru</strong></b></div>
+<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Add Theater</strong></b></div>
 </a> 
 
  
 <p align="center">
     <button type="submit" class="cssbutton" id="butactori1">
-        <b class="sway-text"><strong>Sterge Teatru</strong></b>
+        <b class="sway-text"><strong>Delete Theater</strong></b>
     </button>
 </p>
 <a href="../index.html">
-<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Inapoi</strong></b></div>
+<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Back</strong></b></div>
 </a>
 </div>
 </form>

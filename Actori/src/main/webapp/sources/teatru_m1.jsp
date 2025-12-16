@@ -4,14 +4,14 @@
 <html>
  <head>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- <title>Tabela Teatru</title>
+ <title>Theatre Editor</title>
   <link rel="stylesheet" href="persona.css">
  </head>
  <jsp:useBean id="jb" scope="session" class="db.JavaBean" />
  <jsp:setProperty name="jb" property="*" />
  <body>
  <div id="butholder2">
-  <h1 align="center" id="titlu">Editeaza un tEatRu:</h1>
+  <h1 align="center" id="titlu">Edit current Theatre:</h1>
 </div>
  <%
  jb.connect();
@@ -27,23 +27,23 @@
  <form action="teatru_m2.jsp" method="post">
  <table align="center">
  <tr>
- <td align="right">IdTeatru:</td>
+ <td align="right">TheatreID(ReadOnly):</td>
  <td> <input type="text" name="idteatru" size="30" value="<%= aux%>" readonly/></td>
  </tr>
  <tr>
- <td align="right">Nume:</td>
+ <td align="right">Name:</td>
  <td> <input type="text" name="Nume" size="30" value="<%= Nume%>"/></td>
  </tr>
  <tr>
- <td align="right">Descriere:</td>
+ <td align="right">Description:</td>
  <td> <input type="text" name="Descriere" size="30" value="<%=Descriere%>"/></td>
  </tr>
  <tr>
- <td align="right">Adresa:</td>
+ <td align="right">Adress:</td>
  <td> <input type="text" name="Adresa" size="30" value="<%=Adresa%>"/></td>
  </tr>
  <tr>
- <td align="right">Oras:</td>
+ <td align="right">City:</td>
  <td> 
     <select name="idoras" id="idoras_choice">
         <%
@@ -67,15 +67,15 @@
   <div id="butholder2">
 
  <a href="tabela_teatre.jsp">
-<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Inapoi</strong></b></div>
+<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Back</strong></b></div>
 </a> 
 <p align="center">
     <button type="submit" class="cssbutton" id="butactori1">
-        <b class="sway-text"><strong>Modifica Teatrul</strong></b>
+        <b class="sway-text"><strong>Modify Theatre</strong></b>
     </button>
 </p>
 <a href="../index.html">
-<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Acasa</strong></b></div>
+<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Home</strong></b></div>
 </a> 
  </div>
  </form>

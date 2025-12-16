@@ -4,14 +4,14 @@
 <html>
  <head>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- <title>Adauga Actor</title>
+ <title>Actor Introduction Screen</title>
  <link rel="stylesheet" href="persona.css">
  </head>
  <jsp:useBean id="jb" scope="session" class="db.JavaBean" />
  <jsp:setProperty name="jb" property="*" />
  <body>
   <div id="butholder2">
-  <h1 align="center" id="titlu">Adauga un actor:</h1>
+  <h1 align="center" id="titlu">Add a new actor:</h1>
 </div>
  <%
  String Nume = request.getParameter("nume");
@@ -40,23 +40,23 @@ if (Nume != null) {
  <form action="adauga_actor.jsp" method="post">
  <table>
  <tr>
- <td align="right">Nume:</td>
+ <td align="right">Name:</td>
  <td> <input type="text" name="nume" size="40" /></td>
  </tr>
  <tr>
- <td align="right">Prenume:</td>
+ <td align="right">Surname:</td>
  <td> <input type="text" name="prenume" size="40" /></td>
  </tr>
  <tr>
- <td align="right">Rol:</td>
+ <td align="right">Role:</td>
  <td> <input type="text" name="rol" size="30" /></td>
  </tr>
   <tr>
- <td align="right">Piesa:</td>
+ <td align="right">Play:</td>
  <td> <input type="text" name="piesa" size="30" /></td>
  </tr>
   <tr>
- <td align="right">Teatru:</td>
+ <td align="right">Theatre:</td>
  <td> 
     <select name="idteatru" id="idteatru_choice">
         <%
@@ -79,15 +79,15 @@ if (Nume != null) {
   <div id="butholder2">
 
  <a href="tabela_actori.jsp">
-<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Inapoi</strong></b></div>
+<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Back</strong></b></div>
 </a> 
 <p align="center">
     <button type="submit" class="cssbutton" id="butactori1">
-        <b class="sway-text"><strong>Adauga Actorul</strong></b>
+        <b class="sway-text"><strong>Add Actor</strong></b>
     </button>
 </p>
 <a href="../index.html">
-<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Acasa</strong></b></div>
+<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Back</strong></b></div>
 </a> 
  </div>
  </form>

@@ -1,0 +1,103 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.lang.*,java.math.*,db.*,java.sql.*, java.io.*, java.util.*"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <title>Theatre Editor</title>
+  <link rel="stylesheet" href="persona.css">
+ </head>
+ <jsp:useBean id="jb" scope="session" class="db.JavaBean" />
+ <jsp:setProperty name="jb" property="*" />
+ <body>
+ <div id="butholder2">
+  <h1 align="center" id="titlu">Edit current Theatre:</h1>
+</div>
+ <%
+ jb.connect();
+ int aux = java.lang.Integer.parseInt(request.getParameter("idteatru"));
+ ResultSet rs = jb.intoarceLinieDupaId("teatre", "idteatru", aux);
+ rs.first();
+ String Nume = rs.getString("Nume");
+ String Descriere = rs.getString("Descriere");
+ String Adresa = rs.getString("Adresa");
+ String idoras = rs.getString("idoras");
+ rs.close();
+ %>
+ <form action="teatru_m2.jsp" method="post">
+ <table align="center">
+ <tr>
+ <td align="right">TheatreID(ReadOnly):</td>
+ <td> <input type="text" name="idteatru" size="30" value="<%= aux%>" readonly/></td>
+ </tr>
+ <tr>
+ <td align="right">Name:</td>
+ <td> <input type="text" name="Nume" size="30" value="<%= Nume%>"/></td>
+ </tr>
+ <tr>
+ <td align="right">Description:</td>
+ <td> <input type="text" name="Descriere" size="30" value="<%=Descriere%>"/></td>
+ </tr>
+ <tr>
+ <td align="right">Adress:</td>
+ <td> <input type="text" name="Adresa" size="30" value="<%=Adresa%>"/></td>
+ </tr>
+ <tr>
+ <td align="right">City:</td>
+ <td> 
+    <select name="idoras" id="idoras_choice">
+        <%
+    
+        ResultSet rsOrase = jb.vedeOrase();
+        while (rsOrase.next()) {
+            long id = rsOrase.getLong("idoras");
+            String numeOras = rsOrase.getString("nume");
+        %>
+            <option value="<%= id %>"><%= numeOras %></option>
+        <%
+        }
+        rsOrase.close(); 
+        jb.disconnect(); 
+        %>
+    </select>
+</td>
+ </tr>
+ </table>
+ 
+  <div id="butholder2">
+
+ <a href="tabela_teatre.jsp">
+<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Back</strong></b></div>
+</a> 
+<p align="center">
+    <button type="submit" class="cssbutton" id="butactori1">
+        <b class="sway-text"><strong>Modifica Teatrul</strong></b>
+    </button>
+</p>
+<a href="../index.html">
+<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Acasa</strong></b></div>
+</a> 
+ </div>
+ </form>
+<style>
+body{
+ background-image: url('assets/take_your_time.png');
+ background-size:cover;
+ background-position: center center;
+ }
+ #butactori1
+ {
+ background-color:grey;
+ }
+ input[type="text"], 
+select {
+background-color: #000;
+color: #fff;
+padding:5px;
+width:250px;
+font-size:16px;
+}
+ 
+</style>
+ </body>
+ </html>

@@ -4,14 +4,14 @@
 <html>
  <head>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- <title>Adauga Oras</title>
+ <title>City Introduction Screen</title>
   <link rel="stylesheet" href="persona.css">
  </head>
  <jsp:useBean id="jb" scope="session" class="db.JavaBean" />
  <jsp:setProperty name="jb" property="*" />
  <body>
   <div id="butholder2">
-  <h1 align="center" id="titlu">Adauga un oras:</h1>
+  <h1 align="center" id="titlu">Add a new city:</h1>
 </div>
  <%
  String Nume = request.getParameter("nume");
@@ -25,30 +25,29 @@
  <p>Data: Introdusa cu Succes</p><%
  } else {
  %>
- <h1> Suntem in tabela Oras.</h1>
  <form action="adauga_oras.jsp" method="post">
  <table>
  <tr>
- <td align="right">Nume Oras:</td>
+ <td align="right">City Name:</td>
  <td> <input type="text" name="nume" size="40" /></td>
  </tr>
  <tr>
- <td align="right">Nume Tara:</td>
+ <td align="right">Country:</td>
  <td> <input type="text" name="tara" size="30" /></td>
  </tr>
  </table>
    <div id="butholder2">
 
  <a href="tabela_orase.jsp">
-<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Inapoi</strong></b></div>
+<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Back</strong></b></div>
 </a> 
 <p align="center">
     <button type="submit" class="cssbutton" id="butactori1">
-        <b class="sway-text"><strong>Adauga Orasul</strong></b>
+        <b class="sway-text"><strong>Add City</strong></b>
     </button>
 </p>
 <a href="../index.html">
-<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Acasa</strong></b></div>
+<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Home</strong></b></div>
 </a> 
  </div>
  </form>

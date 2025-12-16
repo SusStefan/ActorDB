@@ -11,21 +11,21 @@
  <jsp:setProperty name="jb" property="*" />
  <body>
   <div id="butholder2">
- <h1 align="center" id="titlu"> Tabela Actori:</h1>
+ <h1 align="center" id="titlu"> Actor Manager:</h1>
 </div>
  <form action="sterge_actori.jsp" method="post">
  <table border="2" align="center">
  <tr>
  <td><b>Mark:</b></td>
- <td><b>IdActor:</b></td>
- <td><b>Nume:</b></td>
- <td><b>Prenume:</b></td>
- <td><b>Rol:</b></td>
- <td><b>Piesa:</b></td>
- <td><b>Teatru:</b></td>
- <td><b>Adresa:</b></td>
- <td><b>Oras:</b></td>
- <td><b>Tara:</b></td>
+ <td><b>ActorID:</b></td>
+ <td><b>Name:</b></td>
+ <td><b>Surname:</b></td>
+ <td><b>Role:</b></td>
+ <td><b>Play:</b></td>
+ <td><b>Theater:</b></td>
+ <td><b>Adress:</b></td>
+ <td><b>City:</b></td>
+ <td><b>Country:</b></td>
  <td><b>Edit:</b></td>
  </tr>
  <%
@@ -53,17 +53,17 @@
  </table>
   <div id="butholder2">
  <a href="adauga_actor.jsp">
-<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Adauga actor</strong></b></div>
+<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Add Actor</strong></b></div>
 </a> 
 
  
 <p align="center">
     <button type="submit" class="cssbutton" id="butactori1">
-        <b class="sway-text"><strong>Sterge Actorul</strong></b>
+        <b class="sway-text"><strong>Delete Actor</strong></b>
     </button>
 </p>
 <a href="../index.html">
-<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Inapoi</strong></b></div>
+<div class="cssbutton "id="butactori1"><b class="sway-text"><strong>Back</strong></b></div>
 </a>
 </div>
  </form>
