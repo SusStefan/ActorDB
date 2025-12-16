@@ -31,6 +31,7 @@
      // 3. Call the correct method with the long ID
      jb.adaugateatru(Nume, Descriere, Adresa, idOras);
      jb.disconnect();
+     response.sendRedirect("tabela_teatre.jsp");
 %>
     <p>Data: Introdusa cu Succes</p>
 <%
@@ -43,7 +44,7 @@
 // --- END Form Display Logic ---
 }
 %>
- <form action="adauga_teatru.jsp" method="post">
+ <form action="adauga_teatru.jsp" method="post" onkeydown="return event.key != 'Enter';">
  <table>
  <tr>
  <td align="right">Theatre name:</td>

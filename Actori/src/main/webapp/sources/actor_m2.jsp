@@ -17,10 +17,9 @@
  String Prenume = request.getParameter("Prenume");
  String Rol = request.getParameter("Rol");
  String Piesa = request.getParameter("Piesa");
- String idteatru = request.getParameter("idteatru");
- String[] valori = {Nume, Prenume ,Rol,Piesa,idteatru};
- String[] campuri = {"nume", "prenume","rol","piesa","idteatru"};
- jb.modificaTabela("actori", "idactor", aux, campuri, valori);
+ BigDecimal Salariu = new BigDecimal(request.getParameter("salariu"));
+ long idteatru = Long.parseLong(request.getParameter("idteatru"));
+ jb.modificaActor(aux,Nume,Prenume,Rol,Piesa,Salariu,idteatru);
  jb.disconnect();
  response.sendRedirect("tabela_actori.jsp");
  %>

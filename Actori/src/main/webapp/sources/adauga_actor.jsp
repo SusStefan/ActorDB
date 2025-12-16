@@ -18,18 +18,21 @@
  String Prenume = request.getParameter("prenume");
  String Rol = request.getParameter("rol");
  String Piesa = request.getParameter("piesa");
+ 
 if (Nume != null) {
      
      // --- START Submission Logic ---
-     
+     String Salariu = request.getParameter("salariu");
      String idTeatruString = request.getParameter("idteatru");
      long idTeatru = 0; // Initialize variable for safety
+     double Salariufloat = 0;
      if (idTeatruString != null && !idTeatruString.isEmpty()) {
-             idTeatru = Long.parseLong(idTeatruString);    
+             idTeatru = Long.parseLong(idTeatruString);  
+             Salariufloat = Double.parseDouble(Salariu);
      }
      jb.connect();
      // 3. Call the correct method with the long ID
-     jb.adaugaactori(Nume, Prenume, Rol, Piesa, idTeatru);
+     jb.adaugaactori(Nume, Prenume, Rol, Piesa, Salariufloat, idTeatru);
      jb.disconnect();
      response.sendRedirect("tabela_actori.jsp");
  %>
@@ -37,7 +40,7 @@ if (Nume != null) {
  } else {
  %>
 
- <form action="adauga_actor.jsp" method="post">
+ <form action="adauga_actor.jsp" method="post" onkeydown="return event.key != 'Enter';">
  <table>
  <tr>
  <td align="right">Name:</td>
@@ -54,6 +57,10 @@ if (Nume != null) {
   <tr>
  <td align="right">Play:</td>
  <td> <input type="text" name="piesa" size="30" /></td>
+ </tr>
+  <tr>
+ <td align="right">Salary:</td>
+ <td> <input type="number" name="salariu" step="0.0001" min="0" max="999999" size="30" required /></td>
  </tr>
   <tr>
  <td align="right">Theatre:</td>
@@ -104,7 +111,7 @@ body{
  {
  background-color:grey;
  }
- input[type="text"], 
+ input[type="text"], input[type="number"],
 select {
 background-color: #000;
 color: #fff;

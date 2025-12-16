@@ -23,10 +23,11 @@
  String Rol = rs.getString("Rol");
  String Piesa = rs.getString("Piesa");
  String idteatru = rs.getString("idteatru");
+ Double Salary = Double.parseDouble(rs.getString("salariu"));
  rs.close();
  jb.disconnect();
  %>
- <form action="actor_m2.jsp" method="post">
+ <form action="actor_m2.jsp" method="post" onkeydown="return event.key != 'Enter';">
  <table align="center">
  <tr>
  <td align="right">ActorID (ReadOnly):</td>
@@ -48,6 +49,12 @@
  <td align="right">Play:</td>
  <td> <input type="text" name="Piesa" size="30" value="<%=Piesa%>"/></td>
  </tr>
+ 
+ <tr>
+ <td align="right">Salary:</td>
+ <td> <input type="number" name="salariu" step="0.0001" min="0" max="999999" size="30" required value="<%=Salary%> "/></td>
+ </tr>
+ 
    <tr>
  <td align="right">Theatre:</td>
  <td> 
@@ -95,7 +102,7 @@ body{
  {
  background-color:grey;
  }
- input[type="text"], 
+input[type="text"], input[type="number"],
 select {
 background-color: #000;
 color: #fff;

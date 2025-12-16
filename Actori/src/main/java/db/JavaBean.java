@@ -2,6 +2,7 @@
  * Curs3_Eclipse - Valentin Pupezescu
  */
 package db;
+import java.math.BigDecimal;
 import java.sql.*;
 /**
  *
@@ -73,17 +74,16 @@ public class JavaBean {
 			error = "Exceptie: Conexiunea cu baza de date a fost pierduta.";
 			throw new Exception(error);
 		}
-	} // end of adaugaMedic()
+	} 
 
-			public void adaugaactori(String Nume, String Prenume, String Rol, String Piesa, long Teatre)
+			public void adaugaactori(String Nume, String Prenume, String Rol, String Piesa, double Salariu, long Teatre)
 					throws SQLException, Exception {
 				if (con != null) {
-					try {
-						// creaza un "prepared SQL statement"
+					try {			
 						Statement stmt;
 						stmt = con.createStatement();
-						stmt.executeUpdate("insert into actori(nume,prenume,rol,piesa,idteatru) values('" + Nume +
-								"' , '" + Prenume + "', '" + Rol + "', '" + Piesa + "', '" + Teatre
+						stmt.executeUpdate("insert into actori(nume,prenume,rol,piesa,salariu,idteatru) values('" + Nume +
+								"' , '" + Prenume + "', '" + Rol + "', '" + Piesa + "', '" + Salariu + "', '" + Teatre
 								+ "');");
 					} catch (SQLException sqle) {
 						error = "ExceptieSQL: Reactualizare nereusita; este posibil sa existe duplicate.";
@@ -93,7 +93,7 @@ public class JavaBean {
 					error = "Exceptie: Conexiunea cu baza de date a fost pierduta.";
 					throw new Exception(error);
 				}
-			} // end of adaugaMedic()
+			} 
 	
 	public ResultSet vedeOrase() throws SQLException, Exception {
 	    ResultSet rs = null;
@@ -155,7 +155,8 @@ ResultSet.CONCUR_READ_ONLY*/);
 			           "a.nume AS nume, " +           
 			           "a.prenume AS prenume, " +     
 			           "a.rol AS rol, " +               
-			           "a.piesa AS piesa, " +          
+			           "a.piesa AS piesa, " +   
+			           "a.salariu AS salariu, " +
 			           "t.nume AS teatru, " + 
 			           "t.adresa AS adresa, " +
 			           "o.nume AS oras, " +             
@@ -174,7 +175,7 @@ ResultSet.CONCUR_READ_ONLY*/);
 			throw new Exception(error);
 		}
 		return rs;
-	} // vedeConsultatie()
+	}
 	
 	public void stergeDateTabela(String[] primaryKeys, String tabela, String dupaID) throws
 	SQLException, Exception {
@@ -243,7 +244,29 @@ ResultSet.CONCUR_READ_ONLY*/);
 			error = "Exceptie: Conexiunea cu baza de date a fost pierduta.";
 			throw new Exception(error);
 		}
-	} // end of modificaTabela()
+	} 	
+	public void modificaActor(int idActor, String Nume, String Prenume, String Rol, String Piesa, BigDecimal Salariu, long idTeatru) 
+		    throws SQLException, Exception {
+		    
+		    if (con == null || con.isClosed()) {
+		        throw new Exception("Exceptie: Conexiunea cu baza de date a fost pierduta.");
+		    }
+		    String sql = "UPDATE actori SET nume=?, prenume=?, rol=?, piesa=?, salariu=?, idteatru=? WHERE idactor=?";
+		    
+		    try (PreparedStatement ps = con.prepareStatement(sql)) {
+		        ps.setString(1, Nume);
+		        ps.setString(2, Prenume);
+		        ps.setString(3, Rol);
+		        ps.setString(4, Piesa);
+		        ps.setBigDecimal(5, Salariu); // Sets DECIMAL type securely
+		        ps.setLong(6, idTeatru);      // Sets LONG/INT type securely
+		        ps.setInt(7, idActor);         // WHERE clause ID
+		        
+		        ps.executeUpdate();
+		    } catch (SQLException sqle) {
+		        throw new SQLException("ExceptieSQL: Reactualizare nereusita. Va rugam verificati log-urile.", sqle);
+		    } 
+		}
 	public ResultSet intoarceLinie(String tabela, int ID) throws SQLException, Exception {
 		ResultSet rs = null;
 		try {

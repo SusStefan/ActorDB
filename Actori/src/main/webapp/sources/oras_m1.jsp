@@ -23,7 +23,7 @@
  rs.close();
  jb.disconnect();
  %>
- <form action="oras_m2.jsp" method="post">
+ <form action="oras_m2.jsp" method="post" onkeydown="return event.key != 'Enter';">
  <table align="center">
  <tr>
  <td align="right">CityID (ReadOnly):</td>

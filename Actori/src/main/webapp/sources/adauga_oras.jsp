@@ -25,7 +25,7 @@
  <p>Data: Introdusa cu Succes</p><%
  } else {
  %>
- <form action="adauga_oras.jsp" method="post">
+ <form action="adauga_oras.jsp" method="post" onkeydown="return event.key != 'Enter';">
  <table>
  <tr>
  <td align="right">City Name:</td>

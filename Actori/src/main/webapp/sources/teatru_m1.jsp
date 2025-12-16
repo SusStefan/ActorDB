@@ -24,10 +24,10 @@
  String idoras = rs.getString("idoras");
  rs.close();
  %>
- <form action="teatru_m2.jsp" method="post">
+ <form action="teatru_m2.jsp" method="post" onkeydown="return event.key != 'Enter';">
  <table align="center">
  <tr>
- <td align="right">TheatreID(ReadOnly):</td>
+ <td align="right">TheatreID (ReadOnly):</td>
  <td> <input type="text" name="idteatru" size="30" value="<%= aux%>" readonly/></td>
  </tr>
  <tr>

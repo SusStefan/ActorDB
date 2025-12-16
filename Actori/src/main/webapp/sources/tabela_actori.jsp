@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page language="java" import="java.lang.*,java.math.*,db.*,java.sql.*, java.io.*, java.util.*"%>
+<%@ page import="java.text.DecimalFormat" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
  <head>
@@ -22,6 +23,7 @@
  <td><b>Surname:</b></td>
  <td><b>Role:</b></td>
  <td><b>Play:</b></td>
+ <td><b>Salary:</b></td>
  <td><b>Theater:</b></td>
  <td><b>Adress:</b></td>
  <td><b>City:</b></td>
@@ -34,6 +36,9 @@
  long x;
  while (rs.next()) {
  x = rs.getInt("idactor");
+ double salary = rs.getDouble("salariu");
+ DecimalFormat df = new DecimalFormat("#,##0.00");
+ String formattedSalary = df.format(salary);
  %>
  <tr>
  <td><input type="checkbox" name="primarykey" value="<%= x%>" /></td><td><%= x%></td>
@@ -41,6 +46,7 @@
  <td><%= rs.getString("prenume")%></td>
  <td><%= rs.getString("rol")%></td>
  <td><%= rs.getString("piesa")%></td>
+ <td><%= formattedSalary %>$</td>
   <td><%= rs.getString("teatru")%></td>
   <td><%= rs.getString("adresa")%></td>
   <td><%= rs.getString("oras")%></td>
@@ -81,16 +87,4 @@ body{
  background-repeat:no-repeat;
  }
  </style>
- <script>
- const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
- let time = document.getElementById("hms");
- let day = document.getElementById("day");
- let month = document.getElementById("month");
- let d= new Date();
- time.innerHTML = d.getDate();	
- month.innerHTML = d.getMonth()+1+"/";	
- day.innerHTML = weekday[d.getDay()];	
-
- 
- </script>
 </html>
